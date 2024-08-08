@@ -15,9 +15,22 @@ fn generate_vector_from_input() -> Vec<Vec<usize>> {
     return matrix;
 }
 
+// 0.1 Write a Rust program to capitalize the first character of each element of a given string vector. 
+// Return the vector.
+
+fn capitalize_the_first_letter(list:Vec<String>)-> () {
+    for el in list {
+        println!("{}", el);
+    }
+    
+}
+
 fn main() {
     println!("Game on!");
     
-    let matrix:Vec<Vec<usize>> = generate_vector_from_input(); 
-    println!("{:?}", matrix);
+    // let matrix:Vec<Vec<usize>> = generate_vector_from_input(); 
+    // println!("{:?}", matrix);
+    
+    let mut list: Vec<String> = vec!["-w".to_string(), "60".to_string(), "args".to_string()];
+    capitalize_the_first_letter(list)
 }
