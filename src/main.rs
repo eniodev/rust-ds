@@ -1,5 +1,5 @@
 use std::io::{self, Write};
-
+use std::env;
 // Bout to go brrr!! (Oh don't even mind me)
  
 // 1- Write a Rust program to create an n x n matrix by taking an integer (n) as input from the user.
@@ -34,13 +34,10 @@ fn camel_case(string: String) -> String {
 } 
 
 fn main() {
-    println!("Game on!");
-    
     // switch case:
-    println!("Choose from the menu:");
-    let mut line = String::new();
-    io::stdin().read_line(&mut line).expect("Failed to read option...");
-    let option: usize = line.trim().parse().expect("Failed to parse line...");
+    let args: Vec<_> = env::args().collect();
+    let option = args[1].trim().parse().expect("You may enter an integer :)");
+    println!("Arm::{}", args[1]);
     let _ = match option {
          1 => {
             let mut len = String::new();
