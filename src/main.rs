@@ -3,9 +3,8 @@ use std::env;
 // Bout to go brrr!! (Oh don't even mind me)
  
 // 1- Write a Rust program to create an n x n matrix by taking an integer (n) as input from the user.
-fn generate_2dvector_from_input(len: String) -> Vec<Vec<usize>> {
-    let len: usize = len.trim().parse().expect("Faile to convert string to int");
-    let matrix = vec![vec![0; len]; len];
+fn generate_2dvector_from_input(len: usize) -> Vec<Vec<usize>> {
+    let matrix = vec![vec![len; len]; len];
     matrix
 }
 
@@ -40,17 +39,14 @@ fn main() {
     println!("Arm::{}", args[1]);
     let _ = match option {
          1 => {
-            let mut len = String::new();
             print!("Enter the size of the matrix: ");
             io::stdout().flush().unwrap();
-            io::stdin()
-                .read_line(&mut len)
-                .expect("Failed to read line.");
+            let len: usize = args[2].trim().parse().expect("Faile to convert string to int");
             let matrix:Vec<Vec<usize>> = generate_2dvector_from_input(len); 
             println!("{:?}", matrix); 
         },
         2 => {
-            let mut str_arr = vec!["enio".to_string(), "carlos".to_string(), "paulo".to_string()];
+            let mut str_arr = args.into_iter().skip(2).collect();
             str_arr = capitalize_the_first_letter(str_arr);
             print!("{:?}", str_arr);
         }
